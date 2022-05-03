@@ -1,3 +1,49 @@
 # Interactive component
 
+```{r}
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+library(tidyverse)
+library(plotly)
+library(crosstalk)
+library(htmltools)
+```
 
+```{r}
+# import the data
+data <- read.csv("~/Desktop/Health expenditure and financing.csv")
+data <- data[, c(1, 3, 5, 7, 9, 11, 13, 15, 19)]
+country <- c("BRA", "CAN", "CHL", "DEU", "FRA", "GBR", "ISL", "MEX", "POL", "RUS", "TUR", "USA")
+data <- data %>%
+  filter(LOCATION %in% country) %>%
+  mutate(TYPE = ifelse(LOCATION %in% c("BRA", "CHL", "MEX", "POL", "RUS", "TUR"), "DEVELOPING", "DEVELOPED")) %>%
+  filter(HF == "HFTOT")
+# filter the data
+data10 <- data %>%
+  filter(HC == "HCTOT", HP == "HPTOT", MEASURE == "MLLNCU", TIME %in% c(2010:2019)) %>%
+  mutate(Time = dmy(paste(1, 1, TIME)))
+# standardize the value
+data10.1 <- data10 %>%
+  mutate(Value_std = ifelse(TIME == 2010, 1, 0))
+year <- c(2011:2019)
+for (i in 1:length(country)){
+  for (j in 1:length(year)){
+    data10.1[data10.1$LOCATION == country[i] & data10.1$TIME == year[j],]$Value_std <- 1 + 
+      (data10.1[data10.1$LOCATION == country[i] & data10.1$TIME == year[j],]$Value -
+         data10.1[data10.1$LOCATION == country[i] & data10.1$TIME == 2010,]$Value)/
+      data10.1[data10.1$LOCATION == country[i] & data10.1$TIME == 2010,]$Value
+  }
+}
+# plot the time series
+sd <- SharedData$new(data10.1, ~LOCATION)
+g1 <- plot_ly(sd, x = ~Time, y = ~Value_std, color = I("black"), text = ~Value,
+              hovertemplate = paste('<br>Time: %{x}<br>', '<br>Expense: %{text:.2s}<br>')) %>%
+  group_by(LOCATION)%>%
+  add_markers() %>%
+  add_lines() %>%
+  highlight(on = "plotly_hover", color = "red") %>%
+  layout(title = 'Just hover your mouse over the place of interest!',
+         width = 700, height = 450)
+div(g1, align = "center")
+```
