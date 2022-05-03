@@ -2,7 +2,7 @@
 
 In order to convert the data into the form we need for further analysis, we do the following steps:
 
-**1) We remove these two types of columns in the dataset:**  
+**1) We remove these two types of columns in the dataset: **  
 
 [1] Columns not used in our research: `Reference Period Code`, `Reference Period`, `Flag Codes` and `Flags`  
 
