@@ -2,6 +2,8 @@
 
 In this part, we want to explore whether there is any missing value pattern in the dataset.
 
+Firstly, calculating the number of data missing by `sum(is.na())`, the result is 0, which means that there is no missing value in this dataset.
+
 ```{r}
 library(dplyr)
 library(naniar)
@@ -16,12 +18,8 @@ data <- data %>%
   filter(LOCATION %in% country) %>%
   mutate(TYPE = ifelse(LOCATION %in% c("BRA", "CHL", "MEX", "POL", "RUS", "TUR"), "DEVELOPING", "DEVELOPED")) %>%
   filter(HF == "HFTOT")
-# calulate the number of missing values
-sum(is.na(data))
 # draw the plot
 vis_miss(data)
 ```
 
-From above calculation of the number of data missing, we could find that there is no missing value in the dataset.  
-
-In the above plot, there is no black color block that represents for data missing, which also indicates that in this dataset, there is no missing value.
+In the plot above, there is no black color block that represents for data missing, which also indicates that there is no missing value in the dataset.
