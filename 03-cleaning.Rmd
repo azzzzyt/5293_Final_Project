@@ -20,6 +20,8 @@ Developing countries: Brazil (BRA), Chili (CHL), Mexico (MEX), Poland (POL), Rus
 
 **4) We only keep the data calculated within all financing schemes by selecting "HFTOT" in `HF`.**
 
+Below is the tidy data:
+
 ```{r}
 library(dplyr)
 ```
