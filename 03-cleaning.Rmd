@@ -20,3 +20,22 @@ Developing countries: Brazil (BRA), Chili (CHL), Mexico (MEX), Poland (POL), Rus
 
 **4) We only keep the data calculated within all financing schemes by selecting "HFTOT" in `HF`.**
 
+```{r}
+library(dplyr)
+```
+
+```{r}
+# import the data
+data <- read.csv("~/Desktop/Health expenditure and financing.csv")
+# keep the useful columns
+data <- data[, c(1, 3, 5, 7, 9, 11, 13, 15, 19)]
+# keep 12 countries
+country <- c("BRA", "CAN", "CHL", "DEU", "FRA", "GBR", "ISL", "MEX", "POL", "RUS", "TUR", "USA")
+data <- data %>%
+  filter(LOCATION %in% country) %>%
+  # add TYPE
+  mutate(TYPE = ifelse(LOCATION %in% c("BRA", "CHL", "MEX", "POL", "RUS", "TUR"), "DEVELOPING", "DEVELOPED")) %>%
+  # keep HFTOT
+  filter(HF == "HFTOT")
+head(data)
+```
