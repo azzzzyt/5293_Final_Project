@@ -104,6 +104,16 @@
             <section class="normal" id="section-">
 <div id="data-transformation" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Data transformation<a href="data-transformation.html#data-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In order to convert the data into the form we need for further analysis, we do the following steps:</p>
+<p><strong>1) We remove these two types of columns in the dataset:</strong></p>
+<p>[1] Columns not used in our research: <code>Reference Period Code</code>, <code>Reference Period</code>, <code>Flag Codes</code> and <code>Flags</code></p>
+<p>[2] Repeated columns which only explain the previous columns in details: <code>Financing scheme</code> (explain <code>HF</code>), <code>Function</code> (explain <code>HC</code>), <code>Provider</code> (explain <code>HP</code>), <code>Measure</code> (explain <code>MEASURE</code>), <code>Country</code> (explain <code>LOCATION</code>), <code>Year</code> (explain <code>TIME</code>), <code>Unit</code> (explain <code>Unit Code</code>) and <code>PowerCode</code> (explain <code>PowerCode Code</code>)</p>
+<p><strong>2) We only preserve data of these 12 countries,</strong> Brazil (BRA), Canada (CAN), Chili (CHL), Germany (DEU), France (FRA), the United Kingdom (GBR), Iceland (ISL), Mexico (MEX), Poland (POL), Russia (RUS), Turkey (TUR) and the United States (USA).</p>
+<p><strong>3) We add a new column <code>TYPE</code> to classify these 12 countries into developing and developed countries.</strong></p>
+<p>(Reference website: <a href="https://en.wikipedia.org/wiki/Developed_country" class="uri">https://en.wikipedia.org/wiki/Developed_country</a>)</p>
+<p>Developed countries: Canada (CAN), Germany (DEU), France (FRA), the United Kingdom (GBR), Iceland (ISL), the United States (USA)</p>
+<p>Developing countries: Brazil (BRA), Chili (CHL), Mexico (MEX), Poland (POL), Russia (RUS), Turkey (TUR)</p>
+<p><strong>4) We only keep the data calculated within all financing schemes by selecting “HFTOT” in <code>HF</code>.</strong></p>
 
 </div>
             </section>
