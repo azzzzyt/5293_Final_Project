@@ -3,6 +3,7 @@ title: "The Trend of Health Expenditure under Different Factors"
 author: "Lin Liu, Guo Pei"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
+github-repo: azzzzyt/5293_Final_Project
 ---
 
 # Introduction
