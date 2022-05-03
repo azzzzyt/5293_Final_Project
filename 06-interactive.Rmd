@@ -35,15 +35,19 @@ for (i in 1:length(country)){
       data10.1[data10.1$LOCATION == country[i] & data10.1$TIME == 2010,]$Value
   }
 }
+```
+
+In this section, we plot time series on standardized total health expenditure in various countries.
+
+```{r}
 # plot the time series
 sd <- SharedData$new(data10.1, ~LOCATION)
 g1 <- plot_ly(sd, x = ~Time, y = ~Value_std, color = I("black"), text = ~Value,
               hovertemplate = paste('<br>Time: %{x}<br>', '<br>Expense: %{text:.2s}<br>')) %>%
-  group_by(LOCATION)%>%
+  group_by(LOCATION) %>%
   add_markers() %>%
   add_lines() %>%
   highlight(on = "plotly_hover", color = "red") %>%
-  layout(title = 'Just hover your mouse over the place of interest!',
-         width = 700, height = 450)
+  layout(title = "<b>Trend of Total Health Expenditure</b><br>Just hover your mouse over the place of interest!")
 div(g1, align = "center")
 ```
