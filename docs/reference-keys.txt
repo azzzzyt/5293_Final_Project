@@ -19,3 +19,6 @@ trend-of-the-expenditure-on-hospitals-in-different-countries
 correlation-between-different-providers
 interactive-component
 conclusion
+total-health-expenditure-1
+expenditure-on-different-medical-products-and-services-1
+expenditure-on-different-organizations-and-actors-that-deliver-health-care-goods-and-services-1
