@@ -1,2 +1,42 @@
 # Data sources
 
+```{r}
+library(dplyr)
+library(knitr)
+library(kableExtra)
+```
+
+1. Finding process
+
+The data was collected by both group members. After determining the topic, we first searched for relevant keywords through Google, then browsed some websites, and finally got two main data sources: one was the WHO's Global Health Expenditure Database, the other was the "Health expenditure and financing" data under health classification on OECD website. We found that the data on OECD website not only contained all the content we need, but also was more tidy thus we could generate the appropriate format directly. Finally, we decided to use this as our data source.  
+
+(Website: https://stats.oecd.org/Index.aspx)
+
+2. Basic information
+
+The "Health expenditure and financing" dataset contains total 168,763 pieces of data on health expenditure for 44 countries from 2010 to 2019 under five measurement methods.
+
+The 10 main variables with explanations are listed below:
+
+```{r}
+index <- read.csv("~/Desktop/index.csv")
+kbl(index[1:10,], booktabs = TRUE) %>%
+  row_spec(0, bold = TRUE) %>%
+  column_spec(1, bold = TRUE) %>%
+  kable_styling(latex_options = "HOLD_position")
+```
+
+Furthermore, the several sub classes included in the `HF`, `HC` and `HP` columns are listed below:
+
+```{r}
+fpc <- read.csv("~/Desktop/fpc.csv")
+kbl(cbind(fpc[1:11,], fpc[12:22,], fpc[23:33,]), booktabs = TRUE) %>%
+  row_spec(0, bold = TRUE) %>%
+  column_spec(c(2, 4), border_right = TRUE) %>%
+  column_spec(c(1, 3, 5), bold = TRUE) %>%
+  kable_styling(latex_options = "HOLD_position")
+```
+
+3. Potential problems
+
+In the `Flag Codes` column, we find notes on some of the data, such as "provisonal value" and "estimated value", which indicates that some values might not be accurate. However, this kind of data only accounts for a very small proportion of the overall (less than 7.5%), so it will not affect our analysis results much.

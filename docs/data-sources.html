@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
@@ -136,6 +138,345 @@
             <section class="normal" id="section-">
 <div id="data-sources" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Data sources<a href="data-sources.html#data-sources" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ol style="list-style-type: decimal">
+<li>Finding process</li>
+</ol>
+<p>The data was collected by both group members. After determining the topic, we first searched for relevant keywords through Google, then browsed some websites, and finally got two main data sources: one was the WHO’s Global Health Expenditure Database, the other was the “Health expenditure and financing” data under health classification on OECD website. We found that the data on OECD website not only contained all the content we need, but also was more tidy thus we could generate the appropriate format directly. Finally, we decided to use this as our data source.</p>
+<p>(Website: <a href="https://stats.oecd.org/Index.aspx" class="uri">https://stats.oecd.org/Index.aspx</a>)</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Basic information</li>
+</ol>
+<p>The “Health expenditure and financing” dataset contains total 168,763 pieces of data on health expenditure for 44 countries from 2010 to 2019 under five measurement methods.</p>
+<p>The 10 main variables with explanations are listed below:</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;">
+Variable
+</th>
+<th style="text-align:left;font-weight: bold;">
+Explanation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+HF
+</td>
+<td style="text-align:left;">
+Health Care Financing Schemes: financing of the final consumption of health care goods and services
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+HC
+</td>
+<td style="text-align:left;">
+Health Care Functions: medical products and services
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+HP
+</td>
+<td style="text-align:left;">
+Health Care Providers: organizations and actors that deliver health care goods and services
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+MEASURE
+</td>
+<td style="text-align:left;">
+computing methods
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+LOCATION
+</td>
+<td style="text-align:left;">
+country
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+TIME
+</td>
+<td style="text-align:left;">
+year
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Unit Code
+</td>
+<td style="text-align:left;">
+unit
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+PowerCode Code
+</td>
+<td style="text-align:left;">
+powers of 10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Value
+</td>
+<td style="text-align:left;">
+value
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Flag Codes
+</td>
+<td style="text-align:left;">
+flag
+</td>
+</tr>
+</tbody>
+</table>
+<p>Furthermore, the several sub classes included in the <code>HF</code>, <code>HC</code> and <code>HP</code> columns are listed below:</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;">
+Variable
+</th>
+<th style="text-align:left;font-weight: bold;">
+Explanation
+</th>
+<th style="text-align:left;font-weight: bold;">
+Variable
+</th>
+<th style="text-align:left;font-weight: bold;">
+Explanation
+</th>
+<th style="text-align:left;font-weight: bold;">
+Variable
+</th>
+<th style="text-align:left;font-weight: bold;">
+Explanation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+HFTOT
+</td>
+<td style="text-align:left;border-right:1px solid;">
+All financing schemes
+</td>
+<td style="text-align:left;font-weight: bold;">
+HCTOT
+</td>
+<td style="text-align:left;border-right:1px solid;">
+Current expenditure on health (all functions)
+</td>
+<td style="text-align:left;font-weight: bold;">
+HPTOT
+</td>
+<td style="text-align:left;">
+All providers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+HF1
+</td>
+<td style="text-align:left;border-right:1px solid;">
+Government/compulsory schemes
+</td>
+<td style="text-align:left;font-weight: bold;">
+HC0
+</td>
+<td style="text-align:left;border-right:1px solid;">
+Other health care services unknown
+</td>
+<td style="text-align:left;font-weight: bold;">
+HP0
+</td>
+<td style="text-align:left;">
+Providers unknown
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+HF2
+</td>
+<td style="text-align:left;border-right:1px solid;">
+Voluntary health care payment schemes
+</td>
+<td style="text-align:left;font-weight: bold;">
+HC11HC21
+</td>
+<td style="text-align:left;border-right:1px solid;">
+Inpatient curative and rehabilitative care
+</td>
+<td style="text-align:left;font-weight: bold;">
+HP1
+</td>
+<td style="text-align:left;">
+Hospitals
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+HF2HF3
+</td>
+<td style="text-align:left;border-right:1px solid;">
+Voluntary schemes/household out-of-pocket payments
+</td>
+<td style="text-align:left;font-weight: bold;">
+HC13HC23
+</td>
+<td style="text-align:left;border-right:1px solid;">
+Outpatient curative and rehabilitative care
+</td>
+<td style="text-align:left;font-weight: bold;">
+HP2
+</td>
+<td style="text-align:left;">
+Residential long-term care facilities
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+HF3
+</td>
+<td style="text-align:left;border-right:1px solid;">
+Household out-of-pocket payments
+</td>
+<td style="text-align:left;font-weight: bold;">
+HC3
+</td>
+<td style="text-align:left;border-right:1px solid;">
+Long-term care (health)
+</td>
+<td style="text-align:left;font-weight: bold;">
+HP3
+</td>
+<td style="text-align:left;">
+Providers of ambulatory health care
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+</td>
+<td style="text-align:left;border-right:1px solid;">
+</td>
+<td style="text-align:left;font-weight: bold;">
+HC4
+</td>
+<td style="text-align:left;border-right:1px solid;">
+Ancillary services (non-specified by function)
+</td>
+<td style="text-align:left;font-weight: bold;">
+HP4
+</td>
+<td style="text-align:left;">
+Providers of ancillary services
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+</td>
+<td style="text-align:left;border-right:1px solid;">
+</td>
+<td style="text-align:left;font-weight: bold;">
+HC5
+</td>
+<td style="text-align:left;border-right:1px solid;">
+Medical goods (non-specified by function)
+</td>
+<td style="text-align:left;font-weight: bold;">
+HP5
+</td>
+<td style="text-align:left;">
+Retailers and other providers of medical goods
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+</td>
+<td style="text-align:left;border-right:1px solid;">
+</td>
+<td style="text-align:left;font-weight: bold;">
+HC6
+</td>
+<td style="text-align:left;border-right:1px solid;">
+Preventive care
+</td>
+<td style="text-align:left;font-weight: bold;">
+HP6
+</td>
+<td style="text-align:left;">
+Providers of preventive care
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+</td>
+<td style="text-align:left;border-right:1px solid;">
+</td>
+<td style="text-align:left;font-weight: bold;">
+HC7
+</td>
+<td style="text-align:left;border-right:1px solid;">
+Governance and health system and financing administration
+</td>
+<td style="text-align:left;font-weight: bold;">
+HP7
+</td>
+<td style="text-align:left;">
+Providers of health care system administration and financing
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+</td>
+<td style="text-align:left;border-right:1px solid;">
+</td>
+<td style="text-align:left;font-weight: bold;">
+</td>
+<td style="text-align:left;border-right:1px solid;">
+</td>
+<td style="text-align:left;font-weight: bold;">
+HP8
+</td>
+<td style="text-align:left;">
+Rest of the economy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+</td>
+<td style="text-align:left;border-right:1px solid;">
+</td>
+<td style="text-align:left;font-weight: bold;">
+</td>
+<td style="text-align:left;border-right:1px solid;">
+</td>
+<td style="text-align:left;font-weight: bold;">
+HP9
+</td>
+<td style="text-align:left;">
+Rest of the world
+</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" style="list-style-type: decimal">
+<li>Potential problems</li>
+</ol>
+<p>In the <code>Flag Codes</code> column, we find notes on some of the data, such as “provisonal value” and “estimated value”, which indicates that some values might not be accurate. However, this kind of data only accounts for a very small proportion of the overall (less than 7.5%), so it will not affect our analysis results much.</p>
 
 </div>
             </section>
