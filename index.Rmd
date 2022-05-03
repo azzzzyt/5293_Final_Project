@@ -7,3 +7,26 @@ site: bookdown::bookdown_site
 
 # Introduction
 
+## 1. Motivation
+
+Nowadays, with improvement of living standard, people begin to pay more and more attention to health issues. In the past two years, corona virus spread all over the world, many countries responded in their own ways, which made us curious about health expenditure among different countries, therefore, we chose this as the theme for this project.  
+
+Health expenditure is an important determinant of the health status and economic development of a country. To be dpecific, it could result in better provision of health opportunities, which can strengthen human capital and improve the productivity, thereby contributing to economic performance. Therefore, it is important to assess the phenomenon of healthcare spending in a country.
+
+## 2. Content
+
+We mainly concentrate on analyzing health expenditure among different countries over time.
+
+Listed below are a few areas that we are interested in exploring:
+
+[1] Total health expenditure  
+How does the total health expenditure of different countries change over time?
+
+[2] Expenditure on different medical products and services 
+What is the expenditure trend of different medical products and services？
+
+[3] Expenditure on different organizations and actors that deliver health care goods and services 
+What is the trend of health care expenditure on different providers?
+
+[4] Comparison between developed and developing countries  
+Is there any difference of health expenditure on these two types of countries?
