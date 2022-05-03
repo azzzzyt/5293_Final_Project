@@ -5,5 +5,17 @@ data-sources
 data-transformation
 missing-values
 results
+total-health-expenditure
+trends-of-total-health-expenditure-in-various-countries
+trends-of-total-health-expenditure-per-capita-in-various-countries
+trends-in-the-ratio-of-total-health-expenditure-to-gdp-in-various-countries
+expenditure-on-different-medical-products-and-services
+expenditure-on-different-medical-products-and-services-in-different-countries-in-2019
+expenditure-on-different-medical-products-and-services-in-developed-and-developing-countries-in-2019
+expenditure-trend-of-different-medical-products-and-services-in-usa-and-poland
+expenditure-on-different-organizations-and-actors-that-deliver-health-care-goods-and-services
+expenditure-on-different-providers-in-different-countries-in-2010-and-2019
+trend-of-the-expenditure-on-hospitals-in-different-countries
+correlation-between-different-providers
 interactive-component
 conclusion
