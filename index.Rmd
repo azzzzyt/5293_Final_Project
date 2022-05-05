@@ -1,6 +1,6 @@
 --- 
 title: "The Trend of Health Expenditure under Different Factors"
-author: "Lin Liu, Guo Pei"
+author: "Lin Liu ll3461, Guo Pei gp2643"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
