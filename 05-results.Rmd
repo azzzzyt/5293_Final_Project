@@ -109,7 +109,6 @@ As for developing countries on the right, six countries varied a lot. Brazil, Ch
 data4 <- data %>%
   filter(HC != "HCTOT", HP == "HPTOT", MEASURE == "PARCUR", TIME == "2019") %>%
   select(LOCATION, HC, Value)
-head(data4)
 # draw the heatmap
 ggplot(data4, aes(x = LOCATION, y = HC)) + 
   geom_tile(aes(fill = Value), color = "white") + 
